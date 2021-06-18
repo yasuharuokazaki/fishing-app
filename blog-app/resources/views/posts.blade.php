@@ -9,20 +9,13 @@
 </head>
 <body>
 
-    <article>
-        <h1><a href="/posts/my-first-post">My first post</a></h1>
-        <p> from now,I plactice laravel & clreate my Apps!</p>
-    </article>
-  
-    <article>
-        <h1><a href="/posts/my-second-post">My second post</a></h1>
-        <p> My fishing is very funny!</p>
-    </article>
+    <?php foreach($posts as $post) : ?>
 
-    <article>
-        <h1><a href="/posts/my-third-post">My third post</a></h1>
-        <p> Study is very funny!</p>
-    </article>
+        <article>
 
+            <?=$post;?>
+
+        </article>
+    <?php endforeach ?>
 </body>
 </html>
