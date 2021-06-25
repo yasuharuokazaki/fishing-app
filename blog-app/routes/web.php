@@ -1,8 +1,15 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\File;
 use App\Models\Post;
+use App\Models\Category;
+use Illuminate\Support\Facades\DB;
+
+use function PHPSTORM_META\map;
+use Symfony\Component\Yaml\Inline;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Route;
+
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 use Symfony\Component\Routing\Loader\YamlFileLoader;
 
@@ -18,28 +25,31 @@ use Symfony\Component\Routing\Loader\YamlFileLoader;
 */
 
 Route::get('/', function () {
+    // echo phpinfo();
+    // DB::listen(function($query){
+    //     logger($query->sql,$query->bindings);
+    // });
 
-    $documents=[];
-
-    $files=File::files(resource_path("posts"));
-
-    foreach($files as $file){
-        $documents[]=YamlFrontMatter::parseFile($file);
-    }
-
-    return view('posts',[
-      'posts'=> $documents,
-    ]);
+      return view('posts',[
+           'posts'=> Post::with('category')->get(),
+        ]);
 });
 
+//変数postをfunctionに渡し、Postインスタンスとバインドしている
+Route::get('posts/{post:slug}',function(Post $post){
 
-Route::get('posts/{post}',function($slug){
-
-    //表示する投稿を$slugで特定し、postと呼ばれるviewにパスする
-    $post = Post::find($slug);
-
+    //$post:$slugで、Postから取得するデータのidを指定
+    //何も指定せず$postのままだと、idで対象を探しに行く
+        // ddd($post);
     return view('post',[
         'post'=>$post,
     ]);
 
-})->where('post','[A-z_\-]+');
+});
+
+Route::get('categories/{category:slug}',function(Category $category){
+    // ddd($category);
+    return view('posts',[ 
+        'posts'=> $category->posts,
+    ]);
+});

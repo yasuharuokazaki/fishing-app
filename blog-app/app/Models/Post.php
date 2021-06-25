@@ -2,41 +2,24 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Support\Facades\File;
+use App\Models\User;
+use App\Models\Category;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+class Post extends Model
+{
+    use HasFactory;
 
+//書きこみ可能な項目を指定
+    protected $guarded = [];
 
-class Post{
-
-     public static function all(){
-
-        $files = File::files(resource_path("posts/"));
-
-      return  array_map(function ($file){
-            return $file->getContents();
-        }, $files);
-    //  return  File::files(resource_path("posts/"));
- }
-
-
- 
-
- public static function find($slug){
-
-    $path=resource_path("posts/{$slug}.html");
-    // ddd($path);
-
-    if(! file_exists($path)){
-        throw new ModelNotFoundException();
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
-    
-    return cache()->remember("posts.{$slug}",1200,function() use($path){
-      
-        return file_get_contents($path);
 
-    });
-
-
- }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
+
