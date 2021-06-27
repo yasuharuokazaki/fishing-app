@@ -27,8 +27,14 @@
        imgDiv.innerHTML = "";
        imgDiv.appendChild(img);
  
-       let gpsInfo = data.exif && data.exif.get('GPSInfo');
+       let gpsInfo
+       try{
+        gpsInfo = data.exif && data.exif.get('GPSInfo');
        console.log(data.exif[306].substring(0,10));
+       }catch{
+        alert("画像に位置情報が登録されていないため、環境情報を自動取得できませんでした。")
+       }
+       
        
        // data.exif[306)]
        if(gpsInfo){
@@ -46,7 +52,7 @@
         latData.value=locationData[1];
         let Time = data.exif[306].substring(0,10);
         getWather(degLat,degLon,Time);
-       }else{alert("faled to get ")}},
+       }},
        { 
                    maxWidth:150,
                    maxHeight:150,

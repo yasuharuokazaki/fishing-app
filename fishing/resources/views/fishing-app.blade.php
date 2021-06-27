@@ -1,11 +1,18 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+       
+      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Fishing Data') }}
         </h2>
+       
     </x-slot>
 
-    
+          {{-- flash massage --}}
+          @if(session('flash_message'))
+          <div style="margin-top:30px;padding-left:4%" class="font-bold　align-middle text-left text-4xl bg-green-100 flow-root text-green-500">
+            {{ session('flash_message') }}
+          </div>
+          @endif
 
   
 
@@ -15,12 +22,7 @@
           <div class="p-6 bg-white border-b border-gray-200">
             
             
-            {{-- flash massage --}}
-              @if(session('flash_massage'))
-              <div>
-                {{ session('flash_message') }}
-              </div>
-              @endif
+       
                           
                    {{-- display img --}}
                    <div class="flex space-x-4 inline-block">
@@ -70,7 +72,7 @@
                     
                           <div class="input-group" style="margin-top:30px">
                               <p><strong>Descliption</strong></p>
-                              <textarea name="text" id="target-descliption" class="form-control" aria-label="descliption"></textarea>
+                              <textarea name="desc" id="target-descliption" class="form-control" aria-label="descliption" clos="50" rows="6"></textarea>
                           </div>
                       </div>
 
@@ -102,7 +104,7 @@
                             </label>
                             <div style="display: flex;">
                                 <div class="wind-form">
-                                  <input name="win" type="text" class="form-range" id="customRangewinSpn" style="background-color: #ffffff;width:80px;"
+                                  <input name="wind" type="text" class="form-range" id="customRangewinSpn" style="background-color: #ffffff;width:80px;"
                                   placeholder=" --km/h">
                                 </div>
                                 <p style="line-height:10px;color:black;margin-left:5px">km/h</p>
@@ -123,7 +125,7 @@
                               <label for="customRangepressure" class="form-label wind-form" style="margin-top: 10px;margin-bottom:2px">Pressure
                               </label>
                               <div style="display: flex;">
-                                <input name="win" type="text" class="form-range" id="customRangepressure" style="background-color: #ffffff;width:80px;"
+                                <input name="hPa" type="text" class="form-range" id="customRangepressure" style="background-color: #ffffff;width:80px;"
                                     placeholder=" --hPa">
                                   <p style="line-height:10px;color:black;margin-left:5px">hPa</p>
                               </div>

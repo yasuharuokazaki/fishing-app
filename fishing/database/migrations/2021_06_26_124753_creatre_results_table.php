@@ -17,16 +17,17 @@ class CreatreResultsTable extends Migration
         Schema::create('results', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->float('size');
-            $table->text('desc');
-            $table->float('temp');
-            $table->float('water_temp');
-            $table->float('wind');
-            $table->float('hPa');
-            $table->float('lon');
-            $table->float('lat');
-            $table->string('img_path');
-            $table->string('get_time');
+            $table->float('size')->nullable();
+            $table->text('desc')->nullable();
+            $table->float('temp')->nullable();
+            $table->float('water_temp')->nullable();
+            $table->float('wind')->nullable();
+            $table->float('hPa')->nullable();
+            $table->string('lon')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('img_path')->nullable();
+            $table->string('get_time')->nullable();
+            $table->boolean('op_flag')->nullable();
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });

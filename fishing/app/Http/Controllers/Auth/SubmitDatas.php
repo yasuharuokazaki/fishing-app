@@ -9,26 +9,27 @@ use App\Http\Controllers\Controller;
 class SubmitDatas extends Controller
 {
     //
-   public function submit(){
+   public function submit(Request $request){
 
-  
+    // ddd($request);
         $result = new Result();
-         $result->name="test";
-         $result->size=60;
-         $result->desc="this is test";
-         $result->temp=12.3;
-         $result->water_temp=10.3;
-         $result->wind=5.0;
-         $result->hPa=1000.0;
-         $result->lon=148.00;
-         $result->lat=35.0;
+         $result->name=$request->name;
+         $result->size=$request->size;
+         $result->desc=$request->desc;
+         $result->temp=$request->temp;
+         $result->water_temp=$request->water_temp;
+         $result->wind=$request->win;
+         $result->hPa=$request->hPa;;
+         $result->lon=$request->longitude;
+         $result->lat=$request->latitude;
          $result->img_path="testpathishere";
-         $result->get_time="2021-06-27";
+         $result->get_time=$request->gettime;
+         $result->op_flag=$request->op_flag;
          $result->save();
     
 
 
-        return redirect('fishing-app')->with('flash_message','保存が完了しました');
+        return redirect('/fishing-app')->with('flash_message','save！');
     }
 
     
