@@ -5,19 +5,32 @@
         </h2>
     </x-slot>
 
+    
+
+  
+
    <div class="py-12">
      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-6 bg-white border-b border-gray-200">
-             
+            
+            
+            {{-- flash massage --}}
+              @if(session('flash_massage'))
+              <div>
+                {{ session('flash_message') }}
+              </div>
+              @endif
                           
                    {{-- display img --}}
                    <div class="flex space-x-4 inline-block">
 
                         {{-- img up space--}}
-                        <div class="inline-block box-border h-32 w-32 p-4 border-4 rounded-md" style="background-color:blue;width:170px;height:170px;margin-top:5px">
-                        </div>
-                          
+                        
+                            <div id="image" class=" box-border h-32 w-32 p-4 border-4 rounded-md" style="background-color:skyblue;width:170px;height:170px;margin-top:0px padding-bottom:10px" >
+                              {{-- insert img with js --}}
+                            </div>
+                      
                         {{-- input button --}}
                         <div class="space-y-4">
                           
@@ -25,10 +38,15 @@
                             <strong>釣果写真をアップしてね!</strong>
                           </div>
                         
+
+          {{-- form  --}}
+          <form action="{{ url('/fishing_app/submit') }}" method="POST" enctype="multipart/form-data">
+            @csrf
                           <div class="class="my-4 input-group" style="margin-right:100px">
                                 <input id="inputGroupFile04" name="img" type="file" value="Upload" class="form-control"  accept="image/*" capure=""  aria-describedby="inputGroupFileAddon04" aria-label="Upload" >
                                 <input id="lat" type="hidden" name="latitude" value="">
                                 <input id="lon" type="hidden" name="longitude" value="">
+                                <input id="getTime" type="hidden" name="gettime" value="">
                           </div>
 
                         </div> 
@@ -128,16 +146,16 @@
                        </div>
 
                     </div>
-
+               
                   {{-- submit button --}}
                    <div>                  
                       <div class="mx-8 mt-10 w-30 rounded-md">
-                          <button class="mt-5 p-2 rounded-md transition duration-500 ease-in-out bg-blue-300 hover:bg-red-300 transform hover:-translate-y-1 hover:scale-110">データ保存</button>
+                          <button type="submit" class="mt-5 p-2 rounded-md transition duration-500 ease-in-out bg-blue-300 hover:bg-red-300 transform hover:-translate-y-1 hover:scale-110">データ保存</button>
                       </div>  
                    </div> 
                 </div>
                 
-                    
+              </form>   
                 
              
                 
@@ -152,3 +170,8 @@
   </div>
     
 </x-app-layout>
+
+<script>
+ 
+
+</script>

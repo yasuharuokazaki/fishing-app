@@ -26,9 +26,9 @@ class CreatreResultsTable extends Migration
             $table->float('lon');
             $table->float('lat');
             $table->string('img_path');
-            $table->time('get_time');
-            $table->timestamp('update_at');
-            $table->timestamp('create_at');
+            $table->string('get_time');
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
         });
     }
 

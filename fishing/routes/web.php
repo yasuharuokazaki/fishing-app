@@ -22,3 +22,4 @@ Route::get('/fishing-app', function () {
 })->middleware(['auth'])->name('fishing-app');
 
 require __DIR__.'/auth.php';
+
