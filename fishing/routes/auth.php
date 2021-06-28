@@ -1,16 +1,17 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\Auth\NewPasswordController;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\SubmitDatas;
-use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Models\Result;
+use App\Http\Controllers\Auth\DatabaseApp;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\SubmitDatas;
+use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Auth\ConfirmablePasswordController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 
 Route::get('/register', [RegisteredUserController::class, 'create'])
                 ->middleware('guest')
@@ -67,4 +68,7 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
 
 
 Route::post('/fishing_app/submit',[SubmitDatas::class,'submit']
+);
+
+Route::get('/database_app',[DatabaseApp::class,'getresults']
 );
