@@ -2,7 +2,7 @@
     <x-slot name="header">
        
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Fishing Data') }}
+            {{ __('Data Base') }}
         </h2>
        
     </x-slot>
@@ -26,8 +26,14 @@
                         <div class="md:flex-shrink-0">
                         <img class="h-48 w-full object-cover md:h-full md:w-48" src="{{ asset("/storage/imgs")."/".$result->img_path }}" alt="" width="384" height="512">
                         </div>
+                        
+                        
                         <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+                          
                           <blockquote>
+                            <div class="text-gray-500">
+                              {{ $result->get_time }}
+                            </div>
                             <p class="text-lg font-semibold">
                               {{ $result->name }}
                             </p>
@@ -39,6 +45,32 @@
                             <div class="text-gray-500">
                               {{ "気温".$result->temp."℃" }}&emsp;{{ "水温".$result->water_temp."℃" }}&emsp;{{ "風".$result->wind."km/h" }}&emsp;{{ "気圧".$result->hPa."hPa" }}
                             </div>
+                            {{-- button --}}
+
+                              {{-- delete --}}
+                              <form action="{{ url('database_app/'.$result->id) }}" method="POST">
+                              @csrf
+                              @method('DELETE')
+                              <div class="md:flex">
+                                <div class="mt-20 bg-gray-300 rounded-xl m-2 p-2 hover:bg-gray-400">
+                                  <button type="submit">
+                                    削除
+                                  </button>
+                                </div>
+                              </form>
+
+                              {{-- edit --}}
+                                <form action="{{ url('database_app/edit/'.$result->id) }}" method="GET">
+                                  @csrf
+                                  <div class="mt-20 bg-gray-300 rounded-xl m-2 p-2 hover:bg-gray-400">
+                                    <button type="submit">
+                                      変更
+                                    </button>
+                                  </div>
+                                </form>
+                              </div>
+                              
+                            
                           </figcaption>
                          </div>
                       </figure>

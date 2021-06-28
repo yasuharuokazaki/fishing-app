@@ -17,4 +17,9 @@ class DatabaseApp extends Controller
             'results'=>DB::table('results')->simplePaginate(5)
         ]);
         }
+
+    public function delete($id){
+            $result = Result::destroy($id);
+            return redirect('/database_app');
+    }
 }

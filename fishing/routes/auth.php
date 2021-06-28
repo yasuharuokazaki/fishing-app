@@ -72,3 +72,14 @@ Route::post('/fishing_app/submit',[SubmitDatas::class,'submit']
 
 Route::get('/database_app',[DatabaseApp::class,'getresults']
 );
+
+Route::delete('/database_app/{id}',[DatabaseApp::class,'delete']
+);
+
+Route::get('/database_app/edit/{id}',function($id){
+    return view('database-edit',[
+        'id'=>$id,
+    ]);
+});
+// 
+// );
