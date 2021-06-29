@@ -9,6 +9,12 @@
 
         
 
+     {{-- flash massage --}}
+     @if(session('flash_message'))
+     <div style="margin-top:30px;padding-left:4%" class="font-bold　align-middle text-left text-4xl bg-green-100 flow-root text-green-500">
+       {{ session('flash_message') }}
+     </div>
+     @endif
   
 
    <div class="py-12">
@@ -24,7 +30,7 @@
                     
                       <figure class="md:flex bg-blue-100 rounded-xl m-5 p-5">
                         <div class="md:flex-shrink-0">
-                        <img class="h-48 w-full object-cover md:h-full md:w-48" src="{{ asset("/storage/imgs")."/".$result->img_path }}" alt="" width="384" height="512">
+                        <img class="rounded-md h-48 w-full object-cover md:h-full md:w-48" src="{{ asset("/storage/imgs")."/".$result->img_path }}" alt="" width="384" height="512">
                         </div>
                         
                         

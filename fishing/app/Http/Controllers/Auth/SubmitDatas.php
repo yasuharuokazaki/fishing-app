@@ -33,7 +33,7 @@ class SubmitDatas extends Controller
     
 
 
-        return redirect('/fishing-app')->with('flash_message','save！');
+        return redirect('/fishing-app')->with('flash_message','保存しました。');
     }
 
     
