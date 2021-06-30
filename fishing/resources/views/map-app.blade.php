@@ -33,11 +33,71 @@
      <div class="ml-3" id="myMap" style='position:relative;width:600px;height:400px;'>
     
   </div> 
-    
+  
   </section>
  
 
+<script>
+  let json=@json($json) ;
 
+  console.log(json[2]);
 
+  function GetMap(){
+      //マップのインスタンス作成
+     
+       map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
+                 center: new Microsoft.Maps.Location(43.1489024,141.3840896),
+                 mapTypeId: Microsoft.Maps.MapTypeId.aerial,
+                 zoom:8
+               });
+     
+     //
+       var infobox = new Microsoft.Maps.Infobox(point,{   
+                                                    title: '', 
+                                                    description: '',
+                                                    visible: false
+                                                  });
 
+     //作成したinfoboxインスタンスをマップに組みこむ 
+       infobox.setMap(map);
+
+     //登録されているデータ数分のピン作成
+        for(let i=0; i< json.length;i++){
+
+          if( json[i]['lat']!==null && json[i]['lon']!==null){
+
+              var point = new Microsoft.Maps.Location(json[i]['lat'],json[i]['lon']);
+              var pushpin = new Microsoft.Maps.Pushpin(point,{
+                               color: 'red'
+                             });
+         
+              pushpin.metadata={
+                                title:`${json[i]['name']}`,
+                                description:`${json[i]['desc']}<img src={{ asset("/storage/imgs") }}/${json[i]['img_path']}>`
+                               }
+
+         //pushpinClickedという関数をクリックイベントに追加
+              Microsoft.Maps.Events.addHandler(pushpin, 'click', pushpinClicked);
+              map.entities.push(pushpin);
+            }else{
+                  continue;
+            }
+        }
+    
+
+    //pushpinClicked関数の定義
+    function pushpinClicked(e) {
+       console.log(e);
+        if(e.target.metadata){
+          infobox.setOptions({ 
+            location:e.target.getLocation(),
+            title:e.target.metadata.title,
+            description:e.target.metadata.description,
+            visible:true})
+          }
+        };
+   }
+</script>
+
+</body>
 </x-app-layout>

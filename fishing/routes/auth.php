@@ -82,7 +82,9 @@ Route::get('/database_app/edit/{id}',[DatabaseApp::class,'edit']
 Route::post('/modify',[DatabaseApp::class,'modify']);
 
 Route::get('/map_app',function(){
-    return view('map-app');
-}
+    return view('map-app',[
+        'json'=>Result::all(),
+        ]);
+    }
 );
 // );
