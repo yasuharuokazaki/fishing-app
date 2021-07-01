@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
 use App\Models\Result;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class SubmitDatas extends Controller
 {
@@ -17,6 +18,7 @@ class SubmitDatas extends Controller
 
         // ddd();
         $result = new Result();
+         $result->user_id=Auth::id();
          $result->name=$request->name;
          $result->size=$request->size;
          $result->desc=$request->desc;

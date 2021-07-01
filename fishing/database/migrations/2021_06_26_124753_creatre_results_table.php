@@ -16,6 +16,7 @@ class CreatreResultsTable extends Migration
         //
         Schema::create('results', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
             $table->string('name');
             $table->float('size')->nullable();
             $table->text('desc')->nullable();

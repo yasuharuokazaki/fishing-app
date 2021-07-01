@@ -55,7 +55,8 @@
        var infobox = new Microsoft.Maps.Infobox(point,{   
                                                     title: '', 
                                                     description: '',
-                                                    visible: false
+                                                    visible: false,
+                                                    
                                                   });
 
      //作成したinfoboxインスタンスをマップに組みこむ 
@@ -73,7 +74,7 @@
          
               pushpin.metadata={
                                 title:`${json[i]['name']}`,
-                                description:`${json[i]['desc']}<img src={{ asset("/storage/imgs") }}/${json[i]['img_path']}>`
+                                description:`<img class="mt-0 ml-0 mb-0 h-20 m-10" src={{ asset("/storage/imgs") }}/${json[i]['img_path']}><br><p class="w-50 p-0">${json[i]['desc']}</p>`
                                }
 
          //pushpinClickedという関数をクリックイベントに追加
@@ -93,7 +94,10 @@
             location:e.target.getLocation(),
             title:e.target.metadata.title,
             description:e.target.metadata.description,
-            visible:true})
+            visible:true,
+            width:'auto',
+            height:'auto',
+            })
           }
         };
    }

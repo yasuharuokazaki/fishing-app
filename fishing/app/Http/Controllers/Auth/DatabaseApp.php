@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Result;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class DatabaseApp extends Controller
 {
      //get results table 
-     public function getresults(){
+     public function getresults(User $user){
         
         // ddd($results);
         return view('database-app',[
-            'results'=>DB::table('results')->simplePaginate(5)
+            'results'=>User::find(Auth::id())->result()->paginate(5),
+            // DB::table('results')->where('user_id',Auth::id())->simplePaginate(5)
         ]);
         }
 
