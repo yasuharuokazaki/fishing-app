@@ -44,6 +44,8 @@ class DatabaseApp extends Controller
        $result->water_temp=$request->water_temp;
        $result->wind=$request->wind;
        $result->hPa=$request->hPa;
+       $result->op_flag=$request->op_flag;
+    //    ddd($result);
        $result->save();
 
        return redirect("/database_app")->with('flash_message',"訂正しました。");

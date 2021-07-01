@@ -1,36 +1,34 @@
 <x-app-layout>
     <x-slot name="header">
-       
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-              {{ __('Map') }}
-          </h2>
-         
-      </x-slot>
-
-
-<h2 style="margin:0px"><a href="./app_top.php">fishig_data</a></h2>
-<p style="margin-top:0px">USER:</p>
+      <div class="flex">
+            <div class="flex-1">
+              <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                  {{ __('Map') }}
+                
+              </h2>
+              <p style="margin-top:0px">USER:{{ Auth::user()->name }}</p>
 {{-- <input id="user_key" type="hidden" value="{{ 1 }}"> --}}
- <p>※自分の情報：赤ピン<br>他人の情報:青ピン</p>  
+               <p>自分の情報：赤ピン<br>他人の情報:青ピン</p> 
+            </div>
+          <form action="" method="get">
+            <div class="flex-1" style="margin-left:10px">
+            <p>対象魚名で絞り込む</p>
+              <input name="serach" type="search" placeholder="キーワードを入力してください">
+              <input type="submit">
+              <p style="color:red">リセット：「キーワードを入力せず送信」を押してください。</p>
+            </div>
+           </form>
+       </div>
+    </x-slot>
+
+ 
   <section style="display:flex;flex-flow: row-reverse">
-   <div id="img_wrap" style="width:350px">
-   
-    <table>
-    <form action="" method="get">
-    <div style="margin-left:10px">
-    <p>対象魚名で絞り込む</p>
-      <input name="serach" type="search" placeholder="キーワードを入力してください">
-      <input type="submit">
-      <p style="color:red">リセット：「キーワードを入力せず送信」を押してください。</p>
-    </div>
-    </form>
-      {{-- print $imgs ? --}}
-    </table>
+   <div id="img_wrap" style="width:auto">
 
     
     </div>
     <!-- space to display map -->
-     <div class="ml-3" id="myMap" style='position:relative;width:600px;height:400px;'>
+     <div class="" id="myMap" style='position:relative;width:1500px;height:700px;'>
     
   </div> 
   
@@ -65,7 +63,7 @@
      //登録されているデータ数分のピン作成
         for(let i=0; i< json.length;i++){
 
-          if( json[i]['lat']!==null && json[i]['lon']!==null){
+          if( json[i]['lat']!==null && json[i]['lon']!==null && json[i]['op_flag']==1){
 
               var point = new Microsoft.Maps.Location(json[i]['lat'],json[i]['lon']);
               var pushpin = new Microsoft.Maps.Pushpin(point,{

@@ -44,6 +44,21 @@
                         </div>
                     </figcaption>
 
+                    <div>
+                        公開
+                        <div>
+                             <lavel for="op">する </lavel> 
+                            <input id="op" name='op_flag' type="radio" value=1 {{ $predata->op_flag==1? 'checked':'' }} >
+                        </div>
+                        <div>
+                            <lavel for="close">しない </lavel> 
+                           <input id="close" name='op_flag' type="radio" value=0 {{ $predata->op_flag!==1? 'checked':'' }} >
+                       </div>
+                    
+                           
+                    
+                    </div>
+
                     <div class="mx-8 mt-10 w-30 rounded-md">
                         <button type="submit" style="width:100px" class="mt-5 p-2 rounded-md transition duration-500 ease-in-out bg-blue-300 hover:bg-red-300 transform hover:-translate-y-1 hover:scale-110">訂正</button>
                     </div>    
