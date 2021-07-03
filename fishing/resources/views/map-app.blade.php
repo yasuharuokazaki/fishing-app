@@ -6,21 +6,25 @@
                   {{ __('Map') }}
                 
               </h2>
-              <p style="margin-top:0px">USER:{{ Auth::user()->name }}</p>
+              <p style="margin-top:0px">user:{{ Auth::user()->name }}</p>
+              <input type="hidden" id="user_id" value="{{ Auth::user()->id }}">
 {{-- <input id="user_key" type="hidden" value="{{ 1 }}"> --}}
-               <p>自分の情報：赤ピン<br>他人の情報:青ピン</p> 
+               <p>自分の情報:<span class="text-red-500">赤ピン</span><br>他人の情報:<span class="text-blue-500">青ピン</span></p> 
             </div>
-          <form action="" method="get">
+          <form action="{{ url('/map_app/serch')}}" method="get">
+            @csrf
             <div class="flex-1" style="margin-left:10px">
-            <p>対象魚名で絞り込む</p>
-              <input name="serach" type="search" placeholder="キーワードを入力してください">
-              <input type="submit">
-              <p style="color:red">リセット：「キーワードを入力せず送信」を押してください。</p>
+            <p>キーワードで絞り込む</p>
+              <input class="rounded-md" name="keyword" type="search" placeholder="キーワードを入力してください">
+              <button class="bg-gray-400" type="submit">検索</button>
+              <p style="color:red">リセット：キーワードを入力せず「検索」を押してください。</p>
             </div>
            </form>
        </div>
+      
     </x-slot>
-
+   {{-- flash massage --}}
+ 
  
   <section style="display:flex;flex-flow: row-reverse">
    <div id="img_wrap" style="width:auto">
@@ -37,8 +41,9 @@
 
 <script>
   let json=@json($json) ;
-
-  console.log(json[2]);
+  let userId=document.querySelector("#user_id").value;
+ 
+  
 
   function GetMap(){
       //マップのインスタンス作成
@@ -67,7 +72,7 @@
 
               var point = new Microsoft.Maps.Location(json[i]['lat'],json[i]['lon']);
               var pushpin = new Microsoft.Maps.Pushpin(point,{
-                               color: 'red'
+                               color: userId==json[i]['user_id']?'red':'blue',
                              });
          
               pushpin.metadata={
@@ -83,7 +88,9 @@
             }
         }
     
-
+    if(json.length==0){
+    alert('該当する情報なし。別のキーワードで検索してください。');
+  }
     //pushpinClicked関数の定義
     function pushpinClicked(e) {
        console.log(e);

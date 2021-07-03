@@ -1,8 +1,9 @@
 <?php
 
 use App\Models\Result;
-use App\Http\Controllers\Auth\DatabaseApp;
+use App\Http\Controllers\MapApp;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\DatabaseApp;
 use App\Http\Controllers\Auth\SubmitDatas;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\VerifyEmailController;
@@ -81,10 +82,9 @@ Route::get('/database_app/edit/{id}',[DatabaseApp::class,'edit']
 
 Route::post('/modify',[DatabaseApp::class,'modify']);
 
-Route::get('/map_app',function(){
-    return view('map-app',[
-        'json'=>Result::all(),
-        ]);
-    }
-);
+Route::get('/map_app',[MapApp::class,'showmap']);
+
+Route::get('/map_app/serch',[MapApp::class,'serch']);
+    
+
 // );

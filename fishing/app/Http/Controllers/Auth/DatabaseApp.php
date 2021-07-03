@@ -50,4 +50,6 @@ class DatabaseApp extends Controller
 
        return redirect("/database_app")->with('flash_message',"訂正しました。");
     }
+
+    
 }
