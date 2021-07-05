@@ -24,7 +24,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/ja.js"></script>
-        <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=Ar6rtSJI8k1ecF2oV15DK_0sod9DgO7ytoCh919_LgSpD_IjmFtqidoXH0RjqtpT' async defer></script>
+        <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=Ar6rtSJI8k1ecF2oV15DK_0sod9DgO7ytoCh919_LgSpD_IjmFtqidoXH0RjqtpT' async defer></script>
         {{-- <script>alert("hello")</script> --}}
     </head>
     <body class="font-sans antialiased">
