@@ -13,6 +13,8 @@ use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Satellite;
+use Illuminate\Http\Request;
 
 Route::get('/register', [RegisteredUserController::class, 'create'])
                 ->middleware('guest')
@@ -86,5 +88,4 @@ Route::get('/map_app',[MapApp::class,'showmap']);
 
 Route::get('/map_app/serch',[MapApp::class,'serch']);
     
-
-// );
+Route::get('/satellite_app',[Satellite::class,'hello']);
