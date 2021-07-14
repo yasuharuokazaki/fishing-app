@@ -14,6 +14,17 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/leaflet.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/L.Control.Locate.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/qgis2web.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/fontawesome-all.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/leaflet-control-geocoder.Geocoder.css') }}">
+        <style>
+        #map {
+            max-width: 1200px;
+            height: 700px;
+        }
+        </style>
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/load_img/load-image.all.min.js') }}"></script>
