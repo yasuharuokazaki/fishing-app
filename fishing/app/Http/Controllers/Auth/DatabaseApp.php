@@ -35,16 +35,40 @@ class DatabaseApp extends Controller
     }
 
     public function modify(Request $request){
-       $result= Result::find($request->id);
-       $result->get_time=$request->get_time;
-       $result->name=$request->name;
-       $result->size=$request->size;
-       $result->desc=$request->desc;
-       $result->temp=$request->temp;
-       $result->water_temp=$request->water_temp;
-       $result->wind=$request->wind;
-       $result->hPa=$request->hPa;
-       $result->op_flag=$request->op_flag;
+
+        $validatedData = $request->validate([
+            'get_time'=>['max:255'],
+            'name'=>['required|string|max:100'],
+            'size'=>['nullable|numeric|max:5'],
+            'desc'=>['nullable|string|max:255'],
+            'temp'=>['nullable|numeric|max:10'],
+            'water_temp'=>['nullable|numeric|max:10'],
+            'wind'=>['nullable|numeric|max:10'],
+            'hPa'=>['nullable|numeric|max:10'],
+            'op_flag'=>['required'],
+        ]);
+
+        $result= Result::find($request->id);
+        $result->get_time=$validatedData['get_time'];
+        $result->name=$validatedData['name'];
+        $result->size=$validatedData['size'];
+        $result->desc=$validatedData['desc'];
+        $result->temp=$validatedData['temp'];
+        $result->water_temp=$validatedData['water_temp'];
+        $result->wind=$validatedData['wind'];
+        $result->hPa=$validatedData['hPa'];
+        $result->op_flag=$validatedData['op_flag'];
+
+    //    $result= Result::find($request->id);
+    //    $result->get_time=$request->get_time;
+    //    $result->name=$request->name;
+    //    $result->size=$request->size;
+    //    $result->desc=$request->desc;
+    //    $result->temp=$request->temp;
+    //    $result->water_temp=$request->water_temp;
+    //    $result->wind=$request->wind;
+    //    $result->hPa=$request->hPa;
+    //    $result->op_flag=$request->op_flag;
     //    ddd($result);
        $result->save();
 
