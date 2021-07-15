@@ -37,15 +37,15 @@ class DatabaseApp extends Controller
     public function modify(Request $request){
 
         $validatedData = $request->validate([
-            'get_time'=>['max:255'],
-            'name'=>['required|string|max:100'],
-            'size'=>['nullable|numeric|max:5'],
-            'desc'=>['nullable|string|max:255'],
-            'temp'=>['nullable|numeric|max:10'],
-            'water_temp'=>['nullable|numeric|max:10'],
-            'wind'=>['nullable|numeric|max:10'],
-            'hPa'=>['nullable|numeric|max:10'],
-            'op_flag'=>['required'],
+            'get_time'=>'max:255',
+            'name'=>'required|string|max:100',
+            'size'=>'nullable|numeric|max:500',
+            'desc'=>'nullable|string|max:255',
+            'temp'=>'nullable|numeric|max:50',
+            'water_temp'=>'nullable|numeric|max:50',
+            'wind'=>'nullable|numeric|max:50',
+            'hPa'=>'nullable|numeric|max:10000',
+            'op_flag'=>'required',
         ]);
 
         $result= Result::find($request->id);

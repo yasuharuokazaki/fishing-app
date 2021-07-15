@@ -13,6 +13,10 @@ class SubmitDatas extends Controller
 {
     //
    public function submit(Request $request){
+
+    if(!$request->file('img')){
+        return redirect('/fishing-app')->with('flash_message','釣果写真がありません！');;
+    }
         $img_path=uniqid("img_").".".$request->file('img')->guessExtension();
      
         $request->file('img')->move(storage_path()."/app/public/imgs",$img_path);
@@ -25,7 +29,7 @@ class SubmitDatas extends Controller
         'desc'=>'nullable|string|max:255',
         'temp'=>'nullable|numeric|max:50',
         'water_temp'=>'nullable|numeric|max:50',
-        'wind'=>'nullable|numeric|max:10',
+        'wind'=>'nullable|numeric|max:50',
         'hPa'=>'nullable|numeric|max:10000',
         'longitude'=>'nullable|numeric|max:1000',
         'latitude'=>'nullable|numeric|max:1000',
