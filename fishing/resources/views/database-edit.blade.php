@@ -32,36 +32,56 @@
                     <blockquote class="">
                         <div class="">
                         <input name="id" value={{ $predata->id }} type="hidden">
-                        <input name="get_time" value={{ $predata->get_time }} class="rounded-md h-6 mb-1" type="text" placeholder="date">
+                        <p><label for="get_time">釣れた日</label></p>
+                        <input id="get_time" name="get_time" value={{ $predata->get_time }} class="rounded-md h-6 mb-1" type="text" placeholder="ex:2021-07-15">
                     
                         <p class="text-lg font-semibold">
-                        <input name="name" value='{{ $predata->name }}' class="rounded-md h-10 mt-1" type="text" placeholder="name">
-                        <input  name="size"  class="rounded-md h-10 mt-1" type="text" placeholder="size" value='{{ $predata->size }}'>
+                            <label for="name">魚名</label>
                         </p>
-                        <textarea name="desc" id="" cols="40" rows="5" class="rounded-md mt-3 mb-3">
+                            <input id="name" name="name" value='{{ $predata->name }}' class="rounded-md h-10 mt-1" type="text" placeholder="name">
+                        
+                        <p class="text-lg font-semibold">
+                            <label for="size">大きさ</label>
+                        </p>
+                            <input  id="size" name="size"  class="rounded-md h-10 mt-1" type="text" placeholder="size" value='{{ $predata->size }}'>
+                        
+                            <p class="text-lg font-semibold">
+                                <label for="desc">説明</label>
+                            </p>
+                        <textarea name="desc" id="desc" cols="40" rows="5" class="rounded-md mt-3 mb-3" style="align:left">
                             {{ $predata->desc }}
                         </textarea>
                     </div>
                     </blockquote>
 
                     <figcaption class="font-medium">
-                        <div class="text-gray-500">
-                            気温<input name="temp" style="width:5rem" value='{{ $predata->temp }}' type="text" class="rounded-md">℃&emsp;
-                            水温<input name="water_temp" style="width:5rem" value='{{ $predata->water_temp }}' type="text" class="rounded-md">℃&emsp;
-                            風<input name="wind" style="width:5rem" value='{{ $predata->wind }}' type="text" class="rounded-md">km/h&emsp;
-                            気圧<input name="hPa" style="width:5rem" value='{{ $predata->hPa }}' type="text" class="rounded-md">hPa&emsp;
+                        <div class="text-gray-500 space-x-4">
+                            <div class="inline-block"><p>気温</p><input name="temp" style="width:5rem" value='{{ $predata->temp }}' type="text" class="rounded-md">℃</div>
+                            <div class="inline-block"><p>水温</p><input name="water_temp" style="width:5rem" value='{{ $predata->water_temp }}' type="text" class="rounded-md">℃</div>
+                            <div class="inline-block"><p>風</p><input name="wind" style="width:5rem" value='{{ $predata->wind }}' type="text" class="rounded-md">km/h</div>
+                            <div class="inline-block"><p>風向</p><select name="win_dir" class="winDir rounded-xl" id="winDir" style="margin-top: 0px;margin-left:0px;width:50px">
+                                <option value="北">北</option>
+                                <option value="東">東</option>
+                                <option value="南">南</option>
+                                <option value="西">西</option>
+                            </select> </div>   
+                                    
+                            <div class="inline-block"><p>気圧</p><input name="hPa" style="width:5rem" value='{{ $predata->hPa }}' type="text" class="rounded-md">hPa</div>
+                            
+                            &emsp;
                         </div>
                     </figcaption>
 
-                    <div>
-                        公開
+                    <div class="flex">
+                        <div><p class="text-lg font-semibold mr-3">公開</p></div>
+                       
                         <div>
-                             <lavel for="op">する </lavel> 
-                            <input id="op" name='op_flag' type="radio" value=1 {{ $predata->op_flag==1? 'checked':'' }} >
+                             <lavel for="op">する 
+                            <input id="op" name='op_flag' type="radio" value=1 {{ $predata->op_flag==1? 'checked':'' }} ></lavel> 
                         </div>
                         <div>
-                            <lavel for="close">しない </lavel> 
-                           <input id="close" name='op_flag' type="radio" value=0 {{ $predata->op_flag!==1? 'checked':'' }} >
+                            <lavel for="close">しない 
+                           <input id="close" name='op_flag' type="radio" value=0 {{ $predata->op_flag!==1? 'checked':'' }} ></lavel> 
                        </div>
                     
                            

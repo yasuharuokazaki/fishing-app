@@ -68,7 +68,7 @@
                               @csrf
                               @method('DELETE')
                               <div class="md:flex">
-                                <div class="mt-20 bg-gray-300 rounded-xl m-2 p-2 hover:bg-gray-400">
+                                <div class="mt-20 bg-gray-300 rounded-xl m-2 p-2 transition duration-500 ease-in-out bg-blue-300 hover:bg-red-300 transform hover:-translate-y-1 hover:scale-110">
                                   <button type="submit">
                                     削除
                                   </button>
@@ -78,7 +78,7 @@
                               {{-- edit --}}
                                 <form action="{{ url('database_app/edit/'.$result->id) }}" method="GET">
                                   @csrf
-                                  <div class="mt-20 bg-gray-300 rounded-xl m-2 p-2 hover:bg-gray-400">
+                                  <div class="mt-20 bg-gray-300 rounded-xl m-2 p-2 transition duration-500 ease-in-out bg-blue-300 hover:bg-red-300 transform hover:-translate-y-1 hover:scale-110">
                                     <button type="submit">
                                       変更
                                     </button>

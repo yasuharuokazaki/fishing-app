@@ -63,11 +63,11 @@
 
                       {{-- fish data  --}}
                         <div style="margin-right:50px">   
-                            <p><strong>Target-name</strong> | size</p>
+                            <p><strong>魚名</strong> | サイズ</p>
                               <div class="space-x-2 input-group">
                                   <!-- name -->
                                   <div class="inline-block">
-                                    <input name="name" type="text" id="target-name"  placeholder="target-name" aria-label="First name" class="rounded-xl" flex-basis="70%" required>
+                                    <input name="name" type="text" id="target-name"  placeholder="target-name" aria-label="First name" class="rounded-xl mb-1" flex-basis="70%" required>
                                   </div>
                                   <!-- size  -->
                                   <div class="inline-block">
@@ -75,8 +75,8 @@
                                   </div>
                               </div>          
                           <!-- description -->
-                            <div class="input-group mb-4" style="margin-top:30px">
-                                <p><strong>Descliption</strong></p>
+                            <div class="input-group mb-4 mt-3">
+                                <p><strong>説明・メモ</strong></p>
                                 <textarea name="desc" id="target-descliption" class="form-control rounded-xl w-500" aria-label="descliption" clos="50" rows="6" style="width:335px"></textarea>
                             </div>
                         </div>
@@ -84,11 +84,11 @@
 
                         {{-- environment data --}}
                             <div class="space-x-2">
-                                <p><strong>Environment</strong><span style="font-size: 80%;border:none;margin-left:10px;background-color:yellow;color:black">※自動取得します</span></p>
+                                <p><strong>環境情報</strong><span style="font-size: 80%;border:none;margin-left:10px;background-color:yellow;color:black">※自動取得します</span></p>
                                 <p style="font-size:13px">修正する場合は直接入力してください</p>
                                 <!-- 気温<span id="tempSpn">--℃</span> -->
                                 <div class="inline-block">
-                                <label for="customRangeTemp" class="form-label">Temp </label>
+                                <label for="customRangeTemp" class="form-label">気温 </label>
                                     <div class="inline-block" style="display: flex;">
                                         <input name="temp" type="text" class="form-range rounded-xl" id="customRangeTemp" style="background-color: #ffffff;width:80px;"
                                           placeholder=" --℃">
@@ -97,7 +97,7 @@
                                   </div>
                                 <!-- 水温<span id="WtempSpn">--℃</span> -->
                                 <div class="inline-block">
-                                <label for="customRangeWtemp" class="form-label" style="margin-top: 5px;margin-bottom:10px">Water temp</label>
+                                <label for="customRangeWtemp" class="form-label" style="margin-top: 5px;margin-bottom:10px">水温</label>
                                   <div class="inline-block" style="display: flex;">
                                     <input name="water_temp" type="text" class="form-range rounded-xl" id="customRangeWtemp" style="background-color: #ffffff;width:80px;"
                                       placeholder=" --℃">
@@ -106,8 +106,8 @@
                                 </div>
                             <!-- 風<span id="winSpn">-km/h</span>-->
                             <div class="inline-block">
-                                <label for="customRangewinSpn" class="form-label wind-form" style="margin-top: 10px;margin-bottom:2px">Wind
-                                  <span class="dirtext"style="margin-left: 100px;">Direction </span>
+                                <label for="customRangewinSpn" class="form-label wind-form" style="margin-top: 10px;margin-bottom:2px">風速
+                                  <span class="dirtext"style="margin-left: 100px;">風向</span>
                                 </label>
                              
                                 <div class="inline-block" style="display: flex;">
@@ -129,7 +129,7 @@
                             </div>
                             <!-- 気圧-->
                                 <div class="mt-3">
-                                  <label for="customRangepressure" class="form-label wind-form" style="margin-top: 10px;margin-bottom:2px">Pressure
+                                  <label for="customRangepressure" class="form-label wind-form" style="margin-top: 10px;margin-bottom:2px">気圧
                                   </label>
                                   <div  style="display: flex;">
                                     <input name="hPa" type="text" class="form-range rounded-xl" id="customRangepressure" style="background-color: #ffffff;width:80px;"
@@ -158,8 +158,8 @@
                
                   {{-- submit button --}}
                    <div>                  
-                      <div class="mx-8 mt-10 w-30 rounded-md">
-                          <button type="submit" class="mt-5 p-2 rounded-md transition duration-500 ease-in-out bg-blue-300 hover:bg-red-300 transform hover:-translate-y-1 hover:scale-110">データ保存</button>
+                      <div class="mx-4 mt-2 w-30 rounded-md">
+                          <button type="submit" class="mt-2 p-2 rounded-md transition duration-500 ease-in-out bg-blue-300 hover:bg-red-300 transform hover:-translate-y-1 hover:scale-110">データ保存</button>
                       </div>  
                    </div> 
                 </div>

@@ -6,10 +6,10 @@
                   {{ __('Map') }}
                 
               </h2>
-              <p style="margin-top:0px">user:{{ Auth::user()->name }}</p>
+              {{-- <p style="margin-top:0px">user:{{ Auth::user()->name }}</p> --}}
               <input type="hidden" id="user_id" value="{{ Auth::user()->id }}">
 {{-- <input id="user_key" type="hidden" value="{{ 1 }}"> --}}
-               <p>自分の情報:<span class="text-red-500">赤ピン</span><br>他人の情報:<span class="text-blue-500">青ピン</span></p> 
+               <p>自分の情報→<span class="text-red-500">赤ピン</span><br>他人の情報→<span class="text-blue-500">青ピン</span></p> 
             </div>
           <form action="{{ url('/map_app/serch')}}" method="get">
             @csrf
