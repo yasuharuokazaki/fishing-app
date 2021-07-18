@@ -65,10 +65,10 @@
      //作成したinfoboxインスタンスをマップに組みこむ 
        infobox.setMap(map);
 
-     //登録されているデータ数分のピン作成
+     //登録されているデータ数分のピン作成&& json[i]['op_flag']==1
         for(let i=0; i< json.length;i++){
 
-          if( json[i]['lat']!==null && json[i]['lon']!==null && json[i]['op_flag']==1){
+          if( json[i]['lat']!==null && json[i]['lon']!==null ){
 
               var point = new Microsoft.Maps.Location(json[i]['lat'],json[i]['lon']);
               var pushpin = new Microsoft.Maps.Pushpin(point,{

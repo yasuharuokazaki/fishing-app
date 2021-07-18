@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Result;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MapApp extends Controller
 {
     //
     public function showmap(){
         return view('map-app',[
-            'json'=>Result::all(),
+            'json'=>Result::where('user_id',Auth::id())->orWhere(function($query){
+                $query->where('user_id','!=',Auth::id())
+                      ->where('op_flag',1);
+            })->get()
             ]);
     }
 
