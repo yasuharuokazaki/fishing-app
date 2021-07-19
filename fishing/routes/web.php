@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/fishing-app', function () {
+Route::get('/fishing_app', function () {
     return view('fishing-app');
 })->middleware(['auth'])->name('fishing-app');
 
