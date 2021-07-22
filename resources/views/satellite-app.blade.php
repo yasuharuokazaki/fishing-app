@@ -107,7 +107,7 @@
            map.addLayer(layer_chloro_1);
            map.createPane('pane_water_temp_2');
            map.getPane('pane_water_temp_2').style.zIndex = 402;
-           var img_water_temp_2 = 'data/20210718/water_temp_2.png';
+           var img_water_temp_2 = 'data/20210721/water_temp_1.png';
            var img_bounds_water_temp_2 = [[41.17141714171417,139.37835026802145],[45.72787278727873,145.83286662933034]];
            var layer_water_temp_2 = new L.imageOverlay(img_water_temp_2,
                                                  img_bounds_water_temp_2,
@@ -116,7 +116,7 @@
            map.addLayer(layer_water_temp_2);
            map.createPane('pane_water_temp_slope_3');
            map.getPane('pane_water_temp_slope_3').style.zIndex = 403;
-           var img_water_temp_slope_3 = 'data/20210718/water_temp_slope_3.png';
+           var img_water_temp_slope_3 = 'data/20210721/water_temp_slope_2.png';
            var img_bounds_water_temp_slope_3 = [[41.17141714171417,139.37835026802145],[45.72787278727873,145.83286662933034]];
            var layer_water_temp_slope_3 = new L.imageOverlay(img_water_temp_slope_3,
                                                  img_bounds_water_temp_slope_3,
