@@ -21,6 +21,19 @@
                             <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 32px; height: 32px; opacity: 1;" xml:space="preserve">
                                 <style type="text/css">
                                     .st0{fill:#4B4B4B;}
+                                    #map{ 
+                                          position:relative;
+                                          width:100%;
+                                          height:0;
+                                          padding-top:75%;
+                                        }
+                                    #map iframe{
+                                                  position:absolute;
+                                                  top:0;
+	                                              left:0;
+                                                  width:100%;
+                                                  height:100%;
+                                                }
                                 </style>
                                 <g>
                                     <path class="st0" d="M149.193,103.525c15.994,0,28.964-12.97,28.964-28.973V28.964C178.157,12.97,165.187,0,149.193,0
@@ -60,9 +73,12 @@
   
    
        <body>
+        
            <div id="map">
+            <iframe src="https://fishing-logi.sakura.ne.jp/satellite_data/20210722/" frameborder="0"></iframe> 
            </div>
-           <script src="js/qgis2web_expressions.js"></script>
+
+           {{-- <script src="js/qgis2web_expressions.js"></script>
            <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
            <script src="js/leaflet.rotatedMarker.js"></script>
            <script src="js/leaflet.pattern.js"></script>
@@ -72,6 +88,7 @@
            <script src="js/labelgun.min.js"></script>
            <script src="js/labels.js"></script>
            <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+           
            <script>
            var map = L.map('map', {
                zoomControl:true, maxZoom:28, minZoom:1
@@ -107,7 +124,7 @@
            map.addLayer(layer_chloro_1);
            map.createPane('pane_water_temp_2');
            map.getPane('pane_water_temp_2').style.zIndex = 402;
-           var img_water_temp_2 = 'data/20210721/water_temp_1.png';
+           var img_water_temp_2 = 'data/20210718/water_temp_2.png';
            var img_bounds_water_temp_2 = [[41.17141714171417,139.37835026802145],[45.72787278727873,145.83286662933034]];
            var layer_water_temp_2 = new L.imageOverlay(img_water_temp_2,
                                                  img_bounds_water_temp_2,
@@ -116,7 +133,7 @@
            map.addLayer(layer_water_temp_2);
            map.createPane('pane_water_temp_slope_3');
            map.getPane('pane_water_temp_slope_3').style.zIndex = 403;
-           var img_water_temp_slope_3 = 'data/20210721/water_temp_slope_2.png';
+           var img_water_temp_slope_3 = 'data/20210718/water_temp_slope_3.png';
            var img_bounds_water_temp_slope_3 = [[41.17141714171417,139.37835026802145],[45.72787278727873,145.83286662933034]];
            var layer_water_temp_slope_3 = new L.imageOverlay(img_water_temp_slope_3,
                                                  img_bounds_water_temp_slope_3,
@@ -141,7 +158,7 @@
                    return this._bounds;
                }
            });
-           </script>
+           </script> --}}
           
        </body>
    
