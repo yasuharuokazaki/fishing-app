@@ -17,7 +17,10 @@
                 　  <label for="date_field">
                         
                         <div class="flex-1 flex">
-                            <input id="date_field" class="rounded-xl h-9 mr-2" type="date" value="@php print date('Y-m-d');@endphp">
+                            <form id="submit_form" action="" method="get">
+                                <input id="date_field" class="rounded-xl h-9 mr-2" type="date" value="@php print date('Y-m-d',strtotime('-1 day'));@endphp">
+                                {{-- <input id="submit" type="submit">,strtotime('-1 day') --}}
+                            </form>
                             <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 32px; height: 32px; opacity: 1;" xml:space="preserve">
                                 <style type="text/css">
                                     .st0{fill:#4B4B4B;}
@@ -65,30 +68,47 @@
                 </div>
 
               </div>
+              <div id="map">
+                <iframe id="satellite_map" src="https://fishing-logi.sakura.ne.jp/satellite_data/{{ date('Ymd',strtotime('-1 day')) }}/" frameborder="0"></iframe> 
+               </div>
 
             </div>
        </div>
         <script>
             const inputBox = document.querySelector("#date_field");
-            const iframe=document.querySelector("#satellite_map")
+            const iframe=document.querySelector("#satellite_map");
+            const submit_form=document.querySelector("#submit_form");
+            const submit_btn=document.querySelector("#submit")
+            
             inputBox.addEventListener("change",(event)=>{
-                console.log(inputBox.value)
+                console.log("test")
                 let date=inputBox.value.replace(/-/g,"")
-                console.log(`https://fishing-logi.sakura.ne.jp/satellite_data/${date}`);
+                let folder=`https://fishing-logi.sakura.ne.jp/satellite_data/${date}/`
+
+               
+                iframe.setAttribute('src',folder);
+                console.log(iframe);
+                console.log("test")
+                // submit_btn.click();
+            });
+                
                 // fetch('url')でurl先にGETを飛ばす
-                fetch(`https://fishing-logi.sakura.ne.jp/satellite_data/${date}`);
-                });
+                // fetch(`https://fishing-logi.sakura.ne.jp/satellite_data/${date}`);
+                // });
         </script>
     </x-slot>
    {{-- flash massage --}}
   
    
        <body>
-        {{ $ob_date??'' }}
+        {{-- @if (isset($ob_date))
+          {{ $ob_date }}
+        @endif
+        
            <div id="map">
             <iframe id="satellite_map" src="https://fishing-logi.sakura.ne.jp/satellite_data/{{ date('Ymd',strtotime('-1 day')) }}/" frameborder="0"></iframe> 
            </div>
- 
+  --}}
        </body>
    
 </x-app-layout>

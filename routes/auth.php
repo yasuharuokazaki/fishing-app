@@ -90,4 +90,7 @@ Route::get('/map_app/serch',[MapApp::class,'serch']);
     
 Route::get('/satellite_app',[Satellite::class,'satellite_view']);
 
-Route::get('/satellite_app/{ob_date}',[Satellite::class,'specify']);
+// Route::get('/satellite_app/{ob_date}',function(){
+//     echo "get was send!";
+// });
+// [Satellite::class,'specify']);
