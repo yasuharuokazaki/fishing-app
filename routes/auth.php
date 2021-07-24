@@ -88,4 +88,6 @@ Route::get('/map_app',[MapApp::class,'showmap']);
 
 Route::get('/map_app/serch',[MapApp::class,'serch']);
     
-Route::get('/satellite_app',[Satellite::class,'hello']);
+Route::get('/satellite_app',[Satellite::class,'satellite_view']);
+
+Route::get('/satellite_app/{ob_date}',[Satellite::class,'specify']);

@@ -17,7 +17,7 @@
                 　  <label for="date_field">
                         
                         <div class="flex-1 flex">
-                            <input id="date_field" class="rounded-xl h-9 mr-2" type="date">
+                            <input id="date_field" class="rounded-xl h-9 mr-2" type="date" value="@php print date('Y-m-d');@endphp">
                             <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 32px; height: 32px; opacity: 1;" xml:space="preserve">
                                 <style type="text/css">
                                     .st0{fill:#4B4B4B;}
@@ -59,6 +59,7 @@
                                     <rect x="111.386" y="213.067" class="st0" width="51.19" height="51.191" style="fill: rgb(75, 75, 75);"></rect>
                                 </g>
                             </svg> 
+                           
                         </div>
                     </label>
                 </div>
@@ -67,99 +68,27 @@
 
             </div>
        </div>
-  
+        <script>
+            const inputBox = document.querySelector("#date_field");
+            const iframe=document.querySelector("#satellite_map")
+            inputBox.addEventListener("change",(event)=>{
+                console.log(inputBox.value)
+                let date=inputBox.value.replace(/-/g,"")
+                console.log(`https://fishing-logi.sakura.ne.jp/satellite_data/${date}`);
+                // fetch('url')でurl先にGETを飛ばす
+                fetch(`https://fishing-logi.sakura.ne.jp/satellite_data/${date}`);
+                });
+        </script>
     </x-slot>
    {{-- flash massage --}}
   
    
        <body>
-        
+        {{ $ob_date??'' }}
            <div id="map">
-            <iframe src="https://fishing-logi.sakura.ne.jp/satellite_data/20210722/" frameborder="0"></iframe> 
+            <iframe id="satellite_map" src="https://fishing-logi.sakura.ne.jp/satellite_data/{{ date('Ymd',strtotime('-1 day')) }}/" frameborder="0"></iframe> 
            </div>
-
-           {{-- <script src="js/qgis2web_expressions.js"></script>
-           <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
-           <script src="js/leaflet.rotatedMarker.js"></script>
-           <script src="js/leaflet.pattern.js"></script>
-           <script src="js/leaflet-hash.js"></script>
-           <script src="js/Autolinker.min.js"></script>
-           <script src="js/rbush.min.js"></script>
-           <script src="js/labelgun.min.js"></script>
-           <script src="js/labels.js"></script>
-           <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
-           
-           <script>
-           var map = L.map('map', {
-               zoomControl:true, maxZoom:28, minZoom:1
-           }).fitBounds([[35.70361704262386,137.20674039247245],[46.24404241763905,145.99161760076203]]);
-           var hash = new L.Hash(map);
-           map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
-           var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
-           L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
-           var bounds_group = new L.featureGroup([]);
-           function setBounds() {
-           }
-           map.createPane('pane_OSMStandard_0');
-           map.getPane('pane_OSMStandard_0').style.zIndex = 400;
-           var layer_OSMStandard_0 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-               pane: 'pane_OSMStandard_0',
-               opacity: 1.0,
-               attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
-               minZoom: 1,
-               maxZoom: 28,
-               minNativeZoom: 0,
-               maxNativeZoom: 19
-           });
-           layer_OSMStandard_0;
-           map.addLayer(layer_OSMStandard_0);
-           map.createPane('pane_chloro_1');
-           map.getPane('pane_chloro_1').style.zIndex = 401;
-           var img_chloro_1 = 'data/20210718/chloro_1.png';
-           var img_bounds_chloro_1 = [[40.71937193719372,139.72906075506293],[45.52985298529853,145.90157513126096]];
-           var layer_chloro_1 = new L.imageOverlay(img_chloro_1,
-                                                 img_bounds_chloro_1,
-                                                 {pane: 'pane_chloro_1'});
-           bounds_group.addLayer(layer_chloro_1);
-           map.addLayer(layer_chloro_1);
-           map.createPane('pane_water_temp_2');
-           map.getPane('pane_water_temp_2').style.zIndex = 402;
-           var img_water_temp_2 = 'data/20210718/water_temp_2.png';
-           var img_bounds_water_temp_2 = [[41.17141714171417,139.37835026802145],[45.72787278727873,145.83286662933034]];
-           var layer_water_temp_2 = new L.imageOverlay(img_water_temp_2,
-                                                 img_bounds_water_temp_2,
-                                                 {pane: 'pane_water_temp_2'});
-           bounds_group.addLayer(layer_water_temp_2);
-           map.addLayer(layer_water_temp_2);
-           map.createPane('pane_water_temp_slope_3');
-           map.getPane('pane_water_temp_slope_3').style.zIndex = 403;
-           var img_water_temp_slope_3 = 'data/20210718/water_temp_slope_3.png';
-           var img_bounds_water_temp_slope_3 = [[41.17141714171417,139.37835026802145],[45.72787278727873,145.83286662933034]];
-           var layer_water_temp_slope_3 = new L.imageOverlay(img_water_temp_slope_3,
-                                                 img_bounds_water_temp_slope_3,
-                                                 {pane: 'pane_water_temp_slope_3'});
-           bounds_group.addLayer(layer_water_temp_slope_3);
-           map.addLayer(layer_water_temp_slope_3);
-           var osmGeocoder = new L.Control.Geocoder({
-               collapsed: true,
-               position: 'topleft',
-               text: 'Search',
-               title: 'Testing'
-           }).addTo(map);
-           document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
-           .className += ' fa fa-search';
-           document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
-           .title += 'Search for a place';
-           var baseMaps = {};
-           L.control.layers(baseMaps,{"water_temp_slope": layer_water_temp_slope_3,"water_temp": layer_water_temp_2,"chloro": layer_chloro_1,"OSM Standard": layer_OSMStandard_0,},{collapsed:false}).addTo(map);
-           setBounds();
-           L.ImageOverlay.include({
-               getBounds: function () {
-                   return this._bounds;
-               }
-           });
-           </script> --}}
-          
+ 
        </body>
    
 </x-app-layout>
