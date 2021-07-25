@@ -38,7 +38,7 @@
   
   </section>
  
-  <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=Ap-tEEOxYuHTXwifpZYWXeZKOSx38CUi3prp9jDAyf5DM-s-w5o-PjGl5-V9GgSq' async defer></script>
+  <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AgZYOel1FRXY9nw8V1fnsn6c5nZOnvTKZAvigudETWpTFmkwKcur69nk_ImAzjs7' async defer></script>
 <script>
   let json=@json($json) ;
   let userId=document.querySelector("#user_id").value;
