@@ -41,6 +41,12 @@
             <iframe id="satellite_map" src="https://fishing-logi.sakura.ne.jp/satellite_data/{{ date('Ymd',strtotime('-1 day')) }}/" frameborder="0"></iframe> 
         </div>
 
+        <div class="w-10 h-10" style="position:absolute; top:90%;left:5px; z-index:10">
+            <button style="position:absolute; width:90px " onclick="window.scrollTo(0,0)">
+              <img src="{{ asset('/css/images/icon.PNG') }}" style="width:auto; height:auto; max-width:100% ;max-height:100%" alt="">
+            </button>
+         </div>
+
     </div>
 
 <script>

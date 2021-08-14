@@ -43,7 +43,7 @@
                         {{-- input button --}}
                         <div class="">
                              <div class="my-4">
-                                <strong>釣果写真をアップしてね!</strong>
+                                <strong>釣果写真をアップ</strong>
                               </div>
                         {{-- form  --}}
                           <form action="{{ url('/fishing_app/submit') }}" method="POST" enctype="multipart/form-data">
