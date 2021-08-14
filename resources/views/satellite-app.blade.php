@@ -21,7 +21,7 @@
    {{-- flash massage --}}
    <div class="flex">
         
-            <div class="flex " style="position:absolute;z-index:10;top:170px ;right:40%">
+            <div class="flex " style="position:absolute;z-index:10;top:75px ;right:4%">
 
     　              <label for="date_field">
         
