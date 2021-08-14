@@ -1,41 +1,49 @@
 <x-app-layout>
-    <x-slot name="header">
-      <div class="{{ ($isMobile)==true?'':'flex' }}">
-            <div class="{{ ($isMobile)==true?'':'flex-1' }}">
-              <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                  {{ __('Map') }}
-                
-              </h2>
-              {{-- <p style="margin-top:0px">user:{{ Auth::user()->name }}</p> --}}
-              <input type="hidden" id="user_id" value="{{ Auth::user()->id }}">
-{{-- <input id="user_key" type="hidden" value="{{ 1 }}"> --}}
-               <p>自分の情報→<span class="text-red-500">赤ピン</span><br>他人の情報→<span class="text-blue-500">青ピン</span></p> 
+  
+      <x-slot name="header">
+        
+            <div class="{{ ($isMobile)==true?'':'flex' }} ">
+                  <div class="{{ ($isMobile)==true?'':'flex-1' }}">
+                    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                        {{ __('Map') }}
+                      
+                    </h2>
+                    {{-- <p style="margin-top:0px">user:{{ Auth::user()->name }}</p> --}}
+                    <input type="hidden" id="user_id" value="{{ Auth::user()->id }}">
+              {{-- <input id="user_key" type="hidden" value="{{ 1 }}"> --}}
+                    <p>自分の情報→<span class="text-red-500">赤ピン</span><br>他人の情報→<span class="text-blue-500">青ピン</span></p> 
+                  </div>
+                <form action="{{ url('/map_app/serch')}}" method="get">
+                  @csrf
+                  <div class="flex-1" style="margin-left:10px">
+                  <p>キーワードで絞り込む</p>
+                    <input class="rounded-md" name="keyword" type="search" placeholder="キーワードを入力してください">
+                    <button class="bg-gray-400" type="submit">検索</button>
+                    <p style="color:red">リセット：キーワードを入力せず「検索」を押してください。</p>
+                  </div>
+                </form>
             </div>
-          <form action="{{ url('/map_app/serch')}}" method="get">
-            @csrf
-            <div class="flex-1" style="margin-left:10px">
-            <p>キーワードで絞り込む</p>
-              <input class="rounded-md" name="keyword" type="search" placeholder="キーワードを入力してください">
-              <button class="bg-gray-400" type="submit">検索</button>
-              <p style="color:red">リセット：キーワードを入力せず「検索」を押してください。</p>
-            </div>
-           </form>
-       </div>
       
-    </x-slot>
-   {{-- flash massage --}}
- 
+      </x-slot>
+    {{-- flash massage --}}
+
  
   <section style="display:flex;flex-flow: row-reverse">
-   <div id="img_wrap" style="width:auto">
 
-    
+   <div id="img_wrap" style="width:auto" class="">
+
     </div>
     <!-- space to display map -->
-     <div class="" id="myMap" style='position:relative;width:1500px;height:700px;'>
+     <div class="" id="myMap" style='position:relative;width:1500px;height:700px;color:white'>
     
+     <div class="w-10 h-10" style="position:absolute; bottom:40%; z-index:10">
+        <button style="position:fixed " onclick="window.scrollTo(0,0)">
+          <img src="{{ asset('/css/images/icon.PNG') }}" style="width:auto; height:auto; max-width:30% ;max-height:100%" alt="">
+        </button>
+     </div>
+
   </div> 
-  
+ 
   </section>
  
   <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AgZYOel1FRXY9nw8V1fnsn6c5nZOnvTKZAvigudETWpTFmkwKcur69nk_ImAzjs7' async defer></script>
@@ -106,7 +114,11 @@
           }
         };
    }
+
+ 
 </script>
+ 
+
 
 </body>
 </x-app-layout>
