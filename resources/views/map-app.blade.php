@@ -36,7 +36,7 @@
     <!-- space to display map -->
      <div class="" id="myMap" style='position:relative;width:1500px;height:700px;color:white'>
     
-     <div class="w-10 h-10" style="position:absolute; top:40%;right:10%; z-index:10">
+     <div class="w-10 h-10" style="position:absolute; top:30%;right:10%; z-index:10">
         <button style="position:fixed " onclick="window.scrollTo(0,0)">
           <img src="{{ asset('/css/images/icon.PNG') }}" style="width:auto; height:auto; max-width:100% ;max-height:100%" alt="">
         </button>
