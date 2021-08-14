@@ -74,7 +74,7 @@ Route::post('/fishing_app/submit',[SubmitDatas::class,'submit']
 );
 
 Route::get('/database_app',[DatabaseApp::class,'getresults']
-);
+)->name('database_app');
 
 Route::delete('/database_app/{id}',[DatabaseApp::class,'delete']
 );
@@ -84,11 +84,11 @@ Route::get('/database_app/edit/{id}',[DatabaseApp::class,'edit']
 
 Route::post('/modify',[DatabaseApp::class,'modify']);
 
-Route::get('/map_app',[MapApp::class,'showmap']);
+Route::get('/map_app',[MapApp::class,'showmap'])->name('map_app');
 
 Route::get('/map_app/serch',[MapApp::class,'serch']);
     
-Route::get('/satellite_app',[Satellite::class,'satellite_view']);
+Route::get('/satellite_app',[Satellite::class,'satellite_view'])->name('satellite_app');
 
 // Route::get('/satellite_app/{ob_date}',function(){
 //     echo "get was send!";

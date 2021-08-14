@@ -86,6 +86,15 @@
             <x-responsive-nav-link :href="route('fishing-app')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('database_app')" :active="request()->routeIs('dashboard')">
+                {{ __('DataBase') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('map_app')" :active="request()->routeIs('dashboard')">
+                {{ __('Map') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('satellite_app')" :active="request()->routeIs('dashboard')">
+                {{ __('Satellite') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

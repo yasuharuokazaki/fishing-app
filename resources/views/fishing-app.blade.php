@@ -33,11 +33,11 @@
             
             
        
-            <div class="flex">          
+            <div class="{{ ($isMobile==true)?'':'flex' }} ">          
                    {{-- display img --}}
                    <div id="img_wrap" class="">
                         {{-- img up space--}}
-                         <div id="image" class="box-border h-32 w-32 p-4 border-4 rounded-md" style="background-color:skyblue;width:300px;height:370px;margin-top:0px padding-bottom:10px" >
+                         <div id="image" class="box-border h-32 w-32 p-4 border-4 rounded-md h:16 w:16" style="background-color:skyblue;width:300px;height:370px;margin-top:0px padding-bottom:10px" >
                               {{-- insert img with js --}}
                          </div>
                         {{-- input button --}}
