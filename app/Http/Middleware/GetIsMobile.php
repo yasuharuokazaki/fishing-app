@@ -17,8 +17,8 @@ class GetIsMobile
      */
     public function handle(Request $request, Closure $next)
     {
-        // $isMobile = false;
-        $isMobile = true;
+        $isMobile = false;
+        // $isMobile = true;
         $user_agent =  $request->header('User-Agent');
         if ((strpos($user_agent, 'iPhone') !== false)
             || (strpos($user_agent, 'iPod') !== false)
